@@ -10,7 +10,7 @@ todays_number = 1
 
 @tasks.loop(seconds=10)
 async def called_once_a_day():
-    message_channel = bot.get_channel(CONFIG.TARGET_CHANNEL_ID)
+    message_channel = bot.get_channel(os.environ['TARGET_CHANNEL_ID'])
     global todays_number
     kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
     print(f"Sending day {todays_number} on channel {message_channel}")

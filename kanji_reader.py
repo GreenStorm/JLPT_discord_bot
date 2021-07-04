@@ -1,10 +1,9 @@
 import pandas as pd
 import dataframe_image as dfi
-
-JLPT_LEVEL = 1
+import config as CONFIG
 
 kanji_df = pd.read_json('kanji.json').T
-n1_df = kanji_df.loc[kanji_df['jlpt_new'] == JLPT_LEVEL]
+n1_df = kanji_df.loc[kanji_df['jlpt_new'] == CONFIG.JLPT_LEVEL]
 n1_df = n1_df[["strokes","grade","freq","meanings","readings_on","readings_kun"]]
 
 def generate_todays_kanji_(todays_day_number, KANJI_AMOUNT):

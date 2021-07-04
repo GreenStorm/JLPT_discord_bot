@@ -8,9 +8,11 @@ import config as CONFIG
 bot = commands.Bot("!")
 todays_number = 1
 
-@tasks.loop(seconds=10)
+@tasks.loop(minutes=1)
 async def called_once_a_day():
+    print("called once a day")
     message_channel = bot.get_channel(os.environ['TARGET_CHANNEL_ID'])
+    print("INFO: token is "+ str(os.environ['DISCORD_BOT_TOKEN']))
     global todays_number
     kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
     print(f"Sending day {todays_number} on channel {message_channel}")

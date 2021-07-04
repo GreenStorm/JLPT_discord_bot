@@ -12,10 +12,10 @@ todays_number = 1
 async def called_once_a_day():
     print("called once a day")
     message_channel = bot.get_channel(os.environ['TARGET_CHANNEL_ID'])
-    print("INFO: token is "+ str(os.environ['DISCORD_BOT_TOKEN']))
+    print("INFO: message_channel is "+ str(os.environ['TARGET_CHANNEL_ID']))
     global todays_number
-    kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
     print(f"Sending day {todays_number} on channel {message_channel}")
+    kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
     await message_channel.send(file=discord.File('Todays_Kanji.png'))
     todays_number = todays_number + 1
     await message_channel.send(kanji_of_the_day_markdown)

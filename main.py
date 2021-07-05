@@ -8,7 +8,7 @@ import config as CONFIG
 bot = commands.Bot("!")
 todays_number = 1
 
-@tasks.loop(minutes=1.0)
+@tasks.loop(seconds=5)
 async def called_once_a_day():
     channel_id = int(os.environ['TARGET_CHANNEL_ID']) # needs to be cast to int otherwise would return none
     message_channel = bot.get_channel(channel_id)
@@ -25,7 +25,10 @@ async def called_once_a_day():
 async def before():
     await bot.wait_until_ready()
     print("INFO:  Bot is running")
-    called_once_a_day.start()
+
+print("Triggering loop start")
+called_once_a_day.start()
 
 print("INFO: bot start run")
 bot.run(os.environ['DISCORD_BOT_TOKEN'])
+

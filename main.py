@@ -5,8 +5,7 @@ from discord.ext import commands, tasks
 import kanji_reader
 import config as CONFIG
 
-bot = commands.Bot("!")
-todays_number = 1
+
 
 @tasks.loop(minutes=1.0)
 async def called_once_a_day():
@@ -15,17 +14,15 @@ async def called_once_a_day():
     global todays_number
     print(f" INFO: Sending day {todays_number} on channel {message_channel}")
     await message_channel.send("Kanji of day#"+str(todays_number))
-    await message_channel.send(file=discord.File('Todays_Kanji.png'))
     kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
+    await message_channel.send(file=discord.File('Todays_Kanji.png'))
     await message_channel.send(kanji_of_the_day_markdown)
     todays_number = todays_number + 1
 
 
 @called_once_a_day.before_loop
 async def before():
-    await bot.wait_until_ready()
-    print("INFO:  Bot is running")
 
-called_once_a_day.start()
+    called_once_a_day.start()
 print("INFO: bot start run")
 bot.run(os.environ['DISCORD_BOT_TOKEN'])

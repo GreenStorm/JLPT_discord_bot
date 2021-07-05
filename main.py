@@ -1,5 +1,6 @@
 import os
 from discord.ext import commands, tasks
+#import discord
 
 import kanji_reader
 import config as CONFIG
@@ -16,6 +17,7 @@ async def called_once_a_day():
     await message_channel.send("Kanji of day#"+str(todays_number))
     kanji_of_the_day_table_as_string = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
     await message_channel.send(kanji_of_the_day_table_as_string)
+    #await message_channel.send(file=discord.File('Todays_Kanji.png'))
 
     todays_number = todays_number + 1
 

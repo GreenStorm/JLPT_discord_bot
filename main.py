@@ -8,7 +8,7 @@ import config as CONFIG
 bot = commands.Bot("!")
 todays_number = 1
 
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=24)
 async def called_once_a_day():
     channel_id = int(os.environ['TARGET_CHANNEL_ID']) # needs to be cast to int otherwise would return none
     message_channel = bot.get_channel(channel_id)

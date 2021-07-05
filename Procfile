@@ -1,3 +1,3 @@
-myworker: python main.py
-ps:scale web=0
+worker: python main.py
+ps:scale worker=0
 ps:scale myworker=0

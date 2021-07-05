@@ -5,7 +5,8 @@ from discord.ext import commands, tasks
 import kanji_reader
 import config as CONFIG
 
-
+bot = commands.Bot("!")
+todays_number = 1
 
 @tasks.loop(minutes=1.0)
 async def called_once_a_day():
@@ -22,7 +23,9 @@ async def called_once_a_day():
 
 @called_once_a_day.before_loop
 async def before():
-
+    await bot.wait_until_ready()
+    print("INFO:  Bot is running")
     called_once_a_day.start()
+
 print("INFO: bot start run")
 bot.run(os.environ['DISCORD_BOT_TOKEN'])

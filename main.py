@@ -15,9 +15,14 @@ async def called_once_a_day():
     global todays_number
     print(f" INFO: Sending day {todays_number} on channel {message_channel}")
     await message_channel.send("Kanji of day#"+str(todays_number))
-    kanji_of_the_day_markdown = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
-    await message_channel.send(file=discord.File('Todays_Kanji.png'))
-    await message_channel.send(kanji_of_the_day_markdown)
+    kanji_of_the_day_table_as_string = kanji_reader.generate_todays_kanji_(todays_number, CONFIG.KANJI_AMOUNT)
+
+    await message_channel.send(kanji_of_the_day_table_as_string)
+    #kanji_embed = discord.Embed()
+    #kanji_embed.add_field(name="Kanji of day# - "+str(todays_number), value=, inline=True)
+    #kanji_embed.set_footer(text=kanji_of_the_day_html)
+    #await message_channel.send(embed=kanji_embed)
+
     todays_number = todays_number + 1
 
 
@@ -31,4 +36,5 @@ called_once_a_day.start()
 
 print("INFO: bot start run")
 bot.run(os.environ['DISCORD_BOT_TOKEN'])
+
 

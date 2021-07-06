@@ -20,7 +20,8 @@
  ### Notes:
  - Make sure the worker is enabled on the resources tab on Heroku.
  - Alternatively you can run it on your machine or another server and uncomment the generated-picture code to get image + text.
- ![sample bot with image](readme_pics/sample_with_pics.png) doesn't work with Heroku due to an error when deploying with dataframe_images library.
+ ![sample bot with image](readme_pics/sample_with_pics.png) 
+ - The image comments don't work with Heroku due to an error when deploying with dataframe_images library.
 
 ## Usage
 There's no commands, it's a scheduled job that activates every 24 hours, just deploy it to Heroku.

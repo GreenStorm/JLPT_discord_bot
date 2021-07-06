@@ -24,7 +24,9 @@
  - The image comments don't work with Heroku due to an error when deploying with dataframe_images library.
 
 ## Usage
-There's no commands, it's a scheduled job that activates every 24 hours, just deploy it to Heroku.
+- There's no commands, it's a scheduled job that activates every 24 hours, just deploy it to Heroku.
+- You can change the JLPT level by editing the config file (VALUES: 1-5)
+- Also in the config, you can specify the amount of kanji posted (default: 5)
 
 ## Disclaimers
 The JLPT Kanji datasets is provided by [kanji-data](https://github.com/davidluzgouveia/kanji-data).

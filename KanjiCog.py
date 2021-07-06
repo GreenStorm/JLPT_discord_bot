@@ -12,11 +12,13 @@ class KanjiCog(commands.Cog):
         today = datetime.now().timetuple()
 
         self.todays_number = int(today.tm_yday + (356 *
-                                                  (today.tm_year - 2021)))
+                                                  (today.tm_year - 2021)) -
+                                 185)  # reset it to day 2 (can remove this)
         self.kanji_loop.start()
         self.fileDir = os.path.dirname(os.path.abspath(__file__))
 
-    @tasks.loop(minutes=10.0)
+    # This wont actually get called on free tier of heroku (they reboot the server)
+    @tasks.loop(hours=25)
     async def kanji_loop(self):
         await self.send_kanji(self.todays_number)
         self.todays_number = self.todays_number + 1

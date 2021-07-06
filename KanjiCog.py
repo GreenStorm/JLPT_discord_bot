@@ -79,12 +79,11 @@ class KanjiCog(commands.Cog):
                 await ctx.message.add_reaction("🔍")
                 await self.send_kanji(day)
             else:
-                await ctx.send("Hey thats not valid!")
+                await ctx.send("{}様 ごめんなソーリー🙇‍♀️")
                 await ctx.message.add_reaction("👎")
         else:
             await ctx.message.add_reaction("👎")
-            await ctx.send("Hey {} thats not right.. is it...".format(
-                ctx.author))
+            await ctx.send("{}様 それはダメ！😳".format(ctx.author.name))
 
     @kanji_loop.before_loop
     async def before_loop(self):

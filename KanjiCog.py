@@ -74,7 +74,7 @@ class KanjiCog(commands.Cog):
                 day = self.todays_number
 
             if (day > 0):
-                await ctx.message.add_reaction(":mag:")
+                await ctx.message.add_reaction("🔍")
                 await self.send_kanji(day)
             else:
                 await ctx.send("Hey thats not valid!")

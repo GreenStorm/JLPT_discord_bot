@@ -1,2 +1,4 @@
-worker: python main.py
-ps:scale worker=1
+release: ./release.sh
+myworker: python main.py
+ps:scale web=0
+ps:scale myworker=1
